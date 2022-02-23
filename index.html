@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head>
+    <style>
+        html{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-image: url('https://ocrebb776.github.io/ocrebb-reuse/back.svg'); /* For browsers that do not support gradients */
+            background-size: cover;
+
+        }
+        div{
+            background-color: white;
+            width: fit-content;
+            min-width: 40vw;
+            margin-top: 10vh;
+            text-align: center;
+            margin: auto;
+            padding: auto;
+            padding: 10vw 30px;
+            position: sticky;
+            border-radius: 30px;
+            font-size: 30px;
+
+        }
+
+        input[type=text]{
+            width: 20vw;
+            border: none;
+            background-color: rgb(197, 197, 197);
+            border-radius: 10px;
+            padding-left: 4px;
+            height: 30px;
+        }
+        input[type=submit],button{
+            width: 20vw;
+            border: none;
+            background-color: rgb(197, 197, 197);
+            border-radius: 10px;
+            padding-left: 4px;
+            height: 30px;
+        }
+        input[type=text]:focus{
+            outline: none;
+            text-decoration: none;
+            width: 20rem;
+            border: none;
+            background-color: rgb(197, 197, 197);
+            border-radius: 10px;
+            padding-left: 4px;
+            border-bottom: 2px solid red;
+        }
+    </style>
+    <script src="https://ocrebb776.github.io/ocrebb-reuse/index.js"></script> 
+    </head>
+    <body><br><br><div class="form">
+        <form name="pass" onsubmit="validateForm();return false">
+            Enter Master Password:<input type="text" name="master"><br>
+            Select Jumble identifer:<input type="number" name="number" min="1" max="4"><br>
+            <input type="submit">
+        </form><span id="pass"></span><br></div>
+    </body>
+    <script>
+function formvalue(fname,name){
+     return document.forms[fname][name].value
+}
+function validateForm(){
+    if(formvalue('pass','master').length < 8){
+        alert("master password must be 8 or larger")
+        }else{
+            changeid('pass',"Your Super Password is: "+scramble(formvalue('pass','number'),formvalue('pass','master'))+'<br><button onclick="copy()">copy text</button>')
+
+
+    }
+
+}
+function copy(){
+    navigator.clipboard.writeText(scramble(formvalue('pass','number'),formvalue('pass','master')));
+}
+    </script>
+</html>
